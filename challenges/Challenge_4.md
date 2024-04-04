@@ -4,22 +4,10 @@
 Develop the `scrub` function that takes a string of text and an array of forbidden words. The function will replace any forbidden word in the text with a string of lowercase "x" characters, each "x" replacing one letter of the forbidden word. The modified text is then returned from the function.
 
 ### Function
-function scrub(text, forbidden) {
-    if (!text || forbidden.length === 0) {
-        return text;
-    }
+```javascript
+function scrub(text, forbidden)
+```
 
-    const words = text.split(/\s+/);
-
-    const scrubbedText = words.map(word => {
-        if (forbidden.includes(word.toLowerCase())) {
-            return 'x'.repeat(word.length);
-        } else {
-            return word;
-        }
-    });
-    return scrubbedText.join(' ');
-}
 #### Parameters
 - **text:** A string representing the text to be scrubbed.
 - **forbidden:** An array of strings, each a forbidden word to be replaced in the text.

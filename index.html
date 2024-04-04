@@ -6,33 +6,102 @@
   <script id="challenge">
     // 👉 CHALLENGE 1
     function profileActivation(profile, reason) {
-
+    if (profile.active) {
+        if (reason) {
+            profile.active = false;
+            profile.reason = reason;
+            return profile;
+        } else {
+            return "confirm status manually";
+        }
+      } else {
+        profile.active = true;
+        delete profile.reason;
+        return profile;
+      }
     }
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
+      if (x < 1 || x > 3 || y < 1 || y > 3) {
+          return "invalid coordinates";
+      }
 
+      let cell = grid[y - 1][x - 1];
+      if (cell === "🟥") {
+          return "🟥 💀";
+      } else if (cell === "🟦") {
+          return "🟦 🥳";
+      }
     }
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
+    const newObj = {};
 
+    for (let key in obj) {
+        if (key.length > 9) {
+            return "shorten all prop names to 9 chars or less";
+        }
+
+        let value = obj[key];
+        if (value === 0) {
+            newObj[key] = false;
+        } else if (value === 1) {
+            newObj[key] = true;
+        } else if (value === null) {
+            continue;
+        } else {
+            newObj[key] = value;
+        }
     }
+    return newObj;
+  }
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
+      if (!text || forbidden.length === 0) {
+          return text;
+      }
 
+      const words = text.split(/\s+/);
+
+      const scrubbedText = words.map(word => {
+          if (forbidden.includes(word.toLowerCase())) {
+              return 'x'.repeat(word.length);
+          } else {
+              return word;
+          }
+      });
+      return scrubbedText.join(' ');
     }
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
-
+      let areaCode = num.substring(0, 3);
+      let firstPart = num.substring(3, 6);
+      let secondPart = num.substring(6);
+      let formattedNumber = `(${areaCode}) ${firstPart}-${secondPart}`;
+      return formattedNumber;
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
     function diceRolls() {
+    let rolls = 0;
+    let consecutiveSixes = 0;
 
+    while (consecutiveSixes < 3) {
+        const roll = Math.floor(Math.random() * 6) + 1;
+        rolls++;
+
+        if (roll === 6) {
+            consecutiveSixes++;
+        } else {
+            consecutiveSixes = 0;
+        }
     }
+    return rolls;
+  }
 
     // 🧪 DO NOT make any changes below this line ===================
     globalThis.challengeVersion = 1

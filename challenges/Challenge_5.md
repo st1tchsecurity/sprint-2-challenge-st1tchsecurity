@@ -4,13 +4,9 @@
 Create the `normalizePhoneNumber` function that takes a string representing a ten-digit number and returns it formatted in a specific phone number format.
 
 ### Function
-function normalizePhoneNumber(num) {
-    let areaCode = num.substring(0, 3);
-    let firstPart = num.substring(3, 6);
-    let secondPart = num.substring(6);
-    let formattedNumber = `(${areaCode}) ${firstPart}-${secondPart}`;
-    return formattedNumber;
-}
+```javascript
+function normalizePhoneNumber(num)
+```
 
 #### Parameters
 - **num:** A string representing a ten-digit phone number.
