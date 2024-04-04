@@ -6,22 +6,21 @@ A company's website has many user profiles. These profiles can either be active 
 Implement the profileActivation function to manage the activation status of user profiles on a company's website. This function will toggle a profile's active status and handle reasons for inactivity.
 
 ### Function
-```
-function profileActivation(profile, reason)
-```
-#### Parameters
-- profile: An object representing a user profile.
-- reason (optional): A string describing the reason for inactivity.
-
-#### Profile Object Structure
-```
-{
-  active: boolean, // true for active, false for inactive
-  reason: string   // description of inactivity reason, if any
+function profileActivation(profile, reason) {
+    if (profile.active) {
+        if (reason) {
+            profile.active = false;
+            profile.reason = reason;
+            return profile;
+        } else {
+            return "confirm status manually";
+        }
+    } else {
+        profile.active = true;
+        delete profile.reason;
+        return profile;
+    }
 }
-```
-
-The profile is considered active if the `active` prop is true and inactive if the `active` prop is false. If the `active` prop is false, a `reason` prop must be present (i.e., not undefined)
 
 ## Requirements
    1. If the input profile is **active**, set it to **inactive** and assign the provided `reason` to the profile. The updated profile should be returned.

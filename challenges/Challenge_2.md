@@ -4,9 +4,19 @@
 Develop the `mineSweeper` function that evaluates a player's move in a grid-based minefield game. The function should analyze the grid position based on provided coordinates and determine if the player has landed on a safe spot or a mine.
 
 ### Function
-```javascript
-function mineSweeper(grid, x, y)
-```
+function mineSweeper(grid, x, y) {
+    if (x < 1 || x > 3 || y < 1 || y > 3) {
+        return "invalid coordinates";
+    }
+
+    let cell = grid[y - 1][x - 1];
+    if (cell === "🟥") {
+        return "🟥 💀";
+    } else if (cell === "🟦") {
+        return "🟦 🥳";
+    }
+}
+
 
 #### Parameters
 - **grid:** An array of arrays representing the game grid.

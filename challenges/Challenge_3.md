@@ -4,9 +4,27 @@
 Develop the `booleanize` function so it transforms an object's properties based on the criteria listed (see requirements below). This function will loop over each property in the object and apply certain transformations to its values, while also handling edge cases related to property names.
 
 ### Function
-```javascript
-function booleanize(obj)
-```
+function booleanize(obj) {
+    const newObj = {};
+
+    for (let key in obj) {
+        if (key.length > 9) {
+            return "shorten all prop names to 9 chars or less";
+        }
+
+        let value = obj[key];
+        if (value === 0) {
+            newObj[key] = false;
+        } else if (value === 1) {
+            newObj[key] = true;
+        } else if (value === null) {
+            continue;
+        } else {
+            newObj[key] = value;
+        }
+    }
+    return newObj;
+}
 
 #### Parameters
 - **obj:** An object with any number of properties.

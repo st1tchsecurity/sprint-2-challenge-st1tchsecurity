@@ -4,9 +4,22 @@
 Develop the `diceRolls` function that simulates the rolling of a six-sided die. It should continue rolling until it gets three sixes in a row, and then return the total number of rolls it took to achieve this.
 
 ### Function 
-```javascript
-function diceRolls()
-```
+function diceRolls() {
+    let rolls = 0;
+    let consecutiveSixes = 0;
+
+    while (consecutiveSixes < 3) {
+        const roll = Math.floor(Math.random() * 6) + 1;
+        rolls++;
+
+        if (roll === 6) {
+            consecutiveSixes++;
+        } else {
+            consecutiveSixes = 0;
+        }
+    }
+    return rolls;
+}
 
 #### Parameters
 - The function does not take any arguments.
